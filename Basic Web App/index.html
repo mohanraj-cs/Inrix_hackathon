@@ -1,0 +1,120 @@
+<html>
+
+<head>
+    <title>Simple Map</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+</head>
+
+<body>
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box" />
+    <div id="map"></div>
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+        integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
+
+    <! The `defer` attribute causes the callback to execute after the full HTML document has been parsed. For
+        non-blocking uses, avoiding race conditions, and consistent behavior across browsers, consider loading using
+        Promises with https://www.npmjs.com/package/@googlemaps/js-api-loader. ->
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuhadVdyZqVOPtMMYm-1D5DbbSNFWIw0s&libraries=places&callback=initAutocomplete&v=weekly"
+            defer></script>
+
+        <script>
+            function initAutocomplete() {
+
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    center: { lat: 37.7786, lng: -122.4471 },
+                    zoom: 13,
+                    mapTypeId: "roadmap"
+                });
+                // Create the search box and link it to the UI element.
+                const input = document.getElementById("pac-input");
+                const searchBox = new google.maps.places.SearchBox(input);
+
+                map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+                // Bias the SearchBox results towards current map's viewport.
+                map.addListener("bounds_changed", () => {
+                    searchBox.setBounds(map.getBounds());
+                });
+
+                let markers = [];
+
+                // Listen for the event fired when the user selects a prediction and retrieve
+                // more details for that place.
+                searchBox.addListener("places_changed", () => {
+                    const places = searchBox.getPlaces();
+
+                    if (places.length == 0) {
+                        return;
+                    }
+
+                    // Clear out the old markers.
+                    markers.forEach((marker) => {
+                        marker.setMap(null);
+                    });
+                    markers = [];
+
+                    // For each place, get the icon, name and location.
+                    const bounds = new google.maps.LatLngBounds();
+                    console.log(places);
+                    places.forEach((place) => {
+                        const icon = {
+                            url: place.icon,
+                            size: new google.maps.Size(71, 71),
+                            origin: new google.maps.Point(0, 0),
+                            anchor: new google.maps.Point(17, 34),
+                            scaledSize: new google.maps.Size(25, 25),
+                        };
+
+                        let endpoint = 'http://127.0.0.1:5000/dummy'
+                        fetch(endpoint)
+                            .then(data => {
+                                return data.json();
+                            })
+                            .then(post => {
+                                post && post.result.slice(0, 3).map((x, i) => {
+                                    console.log(x);
+                                    var myLatLng = { lat: x.lat, lng: x.long };
+                                    markers.push(
+                                        new google.maps.Marker({
+                                            map,
+                                            title: i.toString(),
+                                            label: x.wait.toString(),
+                                            position: myLatLng,
+                                        })
+                                    );
+                                });
+                            });
+                        if (!place.geometry || !place.geometry.location) {
+                            console.log("Returned place contains no geometry");
+                            return;
+                        }
+
+                        // Create a marker for each place.
+                        // markers.push(
+                        //     new google.maps.Marker({
+                        //         map,
+                        //         icon,
+                        //         title: place.name,
+                        //         position: place.geometry.location,
+                        //     })
+                        // );
+                        if (place.geometry.viewport) {
+                            // Only geocodes have viewport.
+                            bounds.union(place.geometry.viewport);
+                        } else {
+                            bounds.extend(place.geometry.location);
+                        }
+                    });
+                    map.fitBounds(bounds);
+
+                });
+            }
+
+            window.initAutocomplete = initAutocomplete;
+
+        </script>
+</body>
+
+</html>
