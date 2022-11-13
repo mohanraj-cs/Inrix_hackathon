@@ -37,13 +37,13 @@ def nearest_point(source=(-122.4844171, 37.8587248, -122.4844171, 37.8587248), n
         global_co_ordinates = co_ordinates
 
         for i, item in enumerate(co_ordinates):
-            idx.insert(i, (item[0], item[1], item[0], item[1]))
+            idx.insert(i, (item[1], item[0], item[1], item[0]))
 
         # Get the nearest 'n' co_ordinates  
         nearest = list(idx.nearest(source, n))
         #print(nearest)
         for i in nearest:
-            result.append([i, co_ordinates[i][0], co_ordinates[i][1]])
+            result.append([i, co_ordinates[i][1], co_ordinates[i][0]])
         return result
         #print(result)
 
@@ -61,9 +61,9 @@ def dummy():
     data = ''
     for i in global_co_ordinates:
         data = {"result": [
-                    {"lat":i[0], "long":i[1], "wait":1.0},
-                    {"lat":i[0], "long":i[1], "wait":1.5},
-                    {"lat":i[0], "long":i[1], "wait":15},
+                    {"lat":i[1], "long":i[0], "wait":1.0},
+                    {"lat":i[1], "long":i[0], "wait":1.5},
+                    {"lat":i[1], "long":i[0], "wait":15},
         ]}
     return json.dumps(data)
 
