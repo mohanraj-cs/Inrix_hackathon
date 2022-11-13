@@ -6,7 +6,7 @@ from rtree import index
 app = Flask(__name__)
 
 
-def get_access():
+def get_access_token():
     URL = 'https://api.iq.inrix.com/auth/v1/appToken?appId=yxjls34uih&hashToken=eXhqbHMzNHVpaHw1clJXZU1qNUoxNFFpUEVNVkRNemU3cU13dUtSZ01wcWE1dHRRTlJk'
     try:
             response = requests.get(URL)
@@ -44,7 +44,7 @@ def nearest_point(source=(-122.4844171, 37.8587248, -122.4844171, 37.8587248), n
 
 @app.route('/hello')
 def hello():
-    print(get_access())
+    print(get_token_token())
     nearest_point()
     return 'Hello, World!'
 
