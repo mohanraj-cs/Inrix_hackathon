@@ -55,6 +55,7 @@ def hello():
     return 'Hello, World!'
 
 @app.route("/dummy")
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def dummy():
     nearest_point()
     global global_co_ordinates
