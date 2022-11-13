@@ -1,7 +1,10 @@
 from flask import Flask
 import requests
+import json
+from rtree import index
 
 app = Flask(__name__)
+
 
 
 def get_access():
@@ -14,14 +17,32 @@ def get_access():
     except Exception as e:
         print("Error while obtaining token", e)
         return ""
+    
+# https://rtree.readthedocs.io/en/latest/tutorial.html
+def parse_json():
+    co_ordinates = []
+    res = []
+    idx = index.Index()
+    with open("response.json", "r") as r:
+        res = json.load(r)["result"]
+        for co_ordinate in res:
+            co_ordinates.append(co_ordinate["geometry"]["coordinates"])
+
+        for i, item in enumerate(co_ordinates):
+            idx.insert(i, (item[0], item[1], item[0], item[1]))
+
+        # Get the nearest n co_ordinates  
+        n = 5
+        nearest = list(idx.nearest((-122.4844171, 37.8587248, -122.4844171, 37.8587248), n))
+        #print(nearest)
+        #print(co_ordinates[86])
+
 
 @app.route('/hello')
 def hello():
     print(get_access())
+    parse_json()
     return 'Hello, World!'
-
-
-
 
 if __name__ == '__main__':
  app.run(debug=True)
