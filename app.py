@@ -2,11 +2,13 @@ from flask import Flask
 from flask_cors import CORS, cross_origin
 import requests, json, random, csv
 from rtree import index
+import pandas as pd
 
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 global_co_ordinates = []
+global_pd = pd.DataFrame()
 
 def get_access_token():
     URL = 'https://api.iq.inrix.com/auth/v1/appToken?appId=yxjls34uih&hashToken=eXhqbHMzNHVpaHw1clJXZU1qNUoxNFFpUEVNVkRNemU3cU13dUtSZ01wcWE1dHRRTlJk'
@@ -48,11 +50,13 @@ def nearest_point(source=(-122.4844171, 37.8587248, -122.4844171, 37.8587248), n
 
 #args: Petrol Pump ID 
 def get_wait_time(p_id=0, co_ordinate=[-122.437817,24.480877777777778]):
+    global global_pd
     wait_time_dict = {}
     nearest_point()
     line_count = 0
     with open('waiting_time.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
+        global_pd = pd.read_csv("waiting_time.csv")
         for row in csv_reader:
             if line_count == 0:
                 line_count += 1
@@ -63,6 +67,15 @@ def get_wait_time(p_id=0, co_ordinate=[-122.437817,24.480877777777778]):
     p_id += 1
     return wait_time_dict.get(p_id, [co_ordinate[0], co_ordinate[1], 9.478899])
 
+
+def get_data_petrol(p_id=0):
+    df = global_pd[global_pd['Petrol pump id'] == str(p_id)]
+    #yet to complete
+    df_1 = pd.read_json("response.json")
+    df_1 = df_1[['result']]
+    df_2 =  pd.io.json.json_normalize(df_1.result[:])
+    df_2['Petrolpump_index']  =  df_2.index + 1
+    return {'name': "Chevron", "openingHours":12, "address": "benton road", "Phone Number":7894555210}
 
 @app.route('/hello')
 def hello():
