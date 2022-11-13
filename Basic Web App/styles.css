@@ -12,6 +12,15 @@
   margin-left: 16px;
 }
 
+#floating-panel {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 5;
+  font-family: 'Fasthand', cursive;
+}
+
+
 /* 
  * Optional: Makes the sample page fill the window. 
  */
