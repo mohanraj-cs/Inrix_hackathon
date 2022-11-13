@@ -2,6 +2,7 @@ from flask import Flask
 from flask_cors import CORS, cross_origin
 import requests
 import json
+import random
 from rtree import index
 
 app = Flask(__name__)
@@ -59,13 +60,11 @@ def hello():
 def dummy():
     nearest_point()
     global global_co_ordinates
-    data = ''
+    data = []
     for i in global_co_ordinates:
-        data = {"result": [
-                    {"lat":i[1], "long":i[0], "wait":1.0},
-                    {"lat":i[1], "long":i[0], "wait":1.5},
-                    {"lat":i[1], "long":i[0], "wait":15},
-        ]}
+        data.append( {"lat":i[1], "long":i[0], "wait":random.randrange(5, 50, 3)})
+    
+    data = {"result": data}
     return json.dumps(data)
 
 if __name__ == '__main__':
