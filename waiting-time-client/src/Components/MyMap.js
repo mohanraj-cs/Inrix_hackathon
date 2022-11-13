@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import { getWaitingTime } from '../Api/WaitingTime';
 
 const containerStyle = {
   width: '100%',
@@ -18,7 +17,30 @@ function MyMap() {
     googleMapsApiKey: "AIzaSyDuhadVdyZqVOPtMMYm-1D5DbbSNFWIw0s"
   })
 
-  const [map, setMap] = React.useState(null)
+  const [map, setMap] = React.useState(null);
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+
+  // Note: the empty deps array [] means
+  // this useEffect will run once
+  // similar to componentDidMount()
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/dummy")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsDataLoaded(true);
+          setItems(result);
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          setIsDataLoaded(true);
+          console.log(error);
+        }
+      )
+  }, [])
 
   const onLoad = React.useCallback(function callback(map) {
     // This is just an example of getting and using the map instance!!! don't just blindly copy!
@@ -32,18 +54,17 @@ function MyMap() {
     setMap(null)
   }, [])
 
-  getWaitingTime();
-
   return isLoaded ? (
-    <GoogleMap
-      mapContainerStyle={containerStyle}
-      center={center}
-      zoom={12}
-      onLoad={onLoad}
-      onUnmount={onUnmount}
-    >
-      { /* Child components, such as markers, info windows, etc. */}
-    </GoogleMap>
+    isDataLoaded ? (
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={12}
+        onLoad={onLoad}
+        onUnmount={onUnmount}
+      >
+        { /* Child components, such as markers, info windows, etc. */}
+      </GoogleMap>) : <>Loading Data</>
   ) : <div>Loading</div>
 }
 
