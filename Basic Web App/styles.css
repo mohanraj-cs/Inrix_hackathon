@@ -6,6 +6,12 @@
   height: 100%;
 }
 
+#pac-input {
+  width: 50%;
+  margin-top: 16px;
+  margin-left: 16px;
+}
+
 /* 
  * Optional: Makes the sample page fill the window. 
  */
