@@ -6,7 +6,6 @@ from rtree import index
 app = Flask(__name__)
 
 
-
 def get_access():
     URL = 'https://api.iq.inrix.com/auth/v1/appToken?appId=yxjls34uih&hashToken=eXhqbHMzNHVpaHw1clJXZU1qNUoxNFFpUEVNVkRNemU3cU13dUtSZ01wcWE1dHRRTlJk'
     try:
@@ -19,7 +18,7 @@ def get_access():
         return ""
     
 # https://rtree.readthedocs.io/en/latest/tutorial.html
-def parse_json():
+def parse_json(n=5):
     co_ordinates = []
     res = []
     idx = index.Index()
@@ -31,8 +30,7 @@ def parse_json():
         for i, item in enumerate(co_ordinates):
             idx.insert(i, (item[0], item[1], item[0], item[1]))
 
-        # Get the nearest n co_ordinates  
-        n = 5
+        # Get the nearest 'n' co_ordinates  
         nearest = list(idx.nearest((-122.4844171, 37.8587248, -122.4844171, 37.8587248), n))
         #print(nearest)
         #print(co_ordinates[86])
