@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask_cors import CORS, cross_origin
 import requests, json, random, csv
 from rtree import index
@@ -24,7 +24,8 @@ def get_access_token():
 # https://rtree.readthedocs.io/en/latest/tutorial.html
 # Args: source co-ordinate (top, left, bottom, right)
 # Return: An array: [id, [lat, long]]
-def nearest_point(source=(-122.4844171, 37.8587248, -122.4844171, 37.8587248), n=5):
+def nearest_point(lat=-122.4844171,long= 37.8587248, n=5):
+    source=(lat, long, lat, long)
     global global_co_ordinates
     co_ordinates = []
     res = ''
@@ -49,7 +50,8 @@ def nearest_point(source=(-122.4844171, 37.8587248, -122.4844171, 37.8587248), n
         #print(result)
 
 #args: Petrol Pump ID 
-def get_wait_time(p_id=0, co_ordinate=[-122.437817,24.480877777777778]):
+def get_wait_time(lng=-122.437817, lat=24.480877777777778):
+    p_id=0
     global global_pd
     wait_time_dict = {}
     nearest_point()
@@ -65,7 +67,23 @@ def get_wait_time(p_id=0, co_ordinate=[-122.437817,24.480877777777778]):
                 wait_time_dict[int(row[1])] = [row[2], row[3], row[4]]
                 line_count += 1
     p_id += 1
-    return wait_time_dict.get(p_id, [co_ordinate[0], co_ordinate[1], 9.478899])
+    return wait_time_dict.get(p_id, [lng, lat, 9.478899])
+
+def get_wait_time_v2(lng, lat):
+    global global_pd
+    nearest_pumps = nearest_point(lat,lng)
+    df_pumps = pd.read_csv('final_output2.csv')
+    df_final = pd.DataFrame()
+    for item in nearest_pumps:
+        item_lat = item[1]
+        item_lng = item[2]
+        if df_final.empty:
+            df_final = df_pumps[(df_pumps['lat'] == item_lat) & (df_pumps['lng'] == item_lng)]
+        else:
+            df_1 = df_pumps[(df_pumps['lat'] == item_lat) & (df_pumps['lng'] == item_lng)]
+            df_final = df_final.append(df_1)
+
+    return df_final
 
 
 def get_data_petrol(p_id=0):
@@ -96,6 +114,18 @@ def dummy():
     data = {"result": data}
     return json.dumps(data)
 
+@app.route("/getnearestwithwaittime")
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
+def getnearestwithwaittime():
+    args = request.args
+    lat = args.get("lat", type=float)
+    lng = args.get("lng", type=float)
+    return get_wait_time_v2(lng,lat).to_json(orient = 'records')
+
 if __name__ == '__main__':
  app.run(debug=True)
+
+if __name__ == '__main__':
+ app.run(debug=True)
+ 
 
