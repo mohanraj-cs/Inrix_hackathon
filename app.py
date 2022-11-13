@@ -18,9 +18,12 @@ def get_access():
         return ""
     
 # https://rtree.readthedocs.io/en/latest/tutorial.html
-def parse_json(n=5):
+# Args: source co-ordinate (top, left, bottom, right)
+# Return: An array: [id, [lat, long]]
+def nearest_point(source=(-122.4844171, 37.8587248, -122.4844171, 37.8587248), n=5):
     co_ordinates = []
-    res = []
+    res = ''
+    result = []
     idx = index.Index()
     with open("response.json", "r") as r:
         res = json.load(r)["result"]
@@ -31,15 +34,18 @@ def parse_json(n=5):
             idx.insert(i, (item[0], item[1], item[0], item[1]))
 
         # Get the nearest 'n' co_ordinates  
-        nearest = list(idx.nearest((-122.4844171, 37.8587248, -122.4844171, 37.8587248), n))
+        nearest = list(idx.nearest(source, n))
         #print(nearest)
-        #print(co_ordinates[86])
+        for i in nearest:
+            result.append([i, co_ordinates[i][0], co_ordinates[i][1]])
+        return result
+        #print(result)
 
 
 @app.route('/hello')
 def hello():
     print(get_access())
-    parse_json()
+    nearest_point()
     return 'Hello, World!'
 
 @app.route("/dummy")
