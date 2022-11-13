@@ -1,5 +1,6 @@
 import React from 'react'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { getWaitingTime } from '../Api/WaitingTime';
 
 const containerStyle = {
   width: '100%',
@@ -30,6 +31,8 @@ function MyMap() {
   const onUnmount = React.useCallback(function callback(map) {
     setMap(null)
   }, [])
+
+  getWaitingTime();
 
   return isLoaded ? (
     <GoogleMap
