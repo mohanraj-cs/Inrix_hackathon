@@ -50,7 +50,7 @@ def nearest_point(source=(-122.4844171, 37.8587248, -122.4844171, 37.8587248), n
 
 @app.route('/hello')
 def hello():
-    print(get_token_token())
+    print(get_access_token())
     nearest_point()
     return 'Hello, World!'
 
