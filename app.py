@@ -1,8 +1,6 @@
 from flask import Flask
 from flask_cors import CORS, cross_origin
-import requests
-import json
-import random
+import requests, json, random, csv
 from rtree import index
 
 app = Flask(__name__)
@@ -48,11 +46,29 @@ def nearest_point(source=(-122.4844171, 37.8587248, -122.4844171, 37.8587248), n
         return result
         #print(result)
 
+#args: Petrol Pump ID 
+def get_wait_time(p_id=0, co_ordinate=[-122.437817,24.480877777777778]):
+    wait_time_dict = {}
+    nearest_point()
+    line_count = 0
+    with open('waiting_time.csv') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        for row in csv_reader:
+            if line_count == 0:
+                line_count += 1
+                # print("printing headers", row)
+            else:
+                wait_time_dict[int(row[1])] = [row[2], row[3], row[4]]
+                line_count += 1
+    p_id += 1
+    return wait_time_dict.get(p_id, [co_ordinate[0], co_ordinate[1], 9.478899])
+
 
 @app.route('/hello')
 def hello():
     print(get_access_token())
     nearest_point()
+    print("******", get_wait_time())
     return 'Hello, World!'
 
 @app.route("/dummy")
