@@ -1,0 +1,28 @@
+[
+    {
+        "providerHash": "c3e878e27f52e2a57ace4d9a76fd9acf",
+        "startLoc": "37.761539,-122.477006",
+        "startDateTime": "2022-05-01T04:05:28.446Z",
+        "endLoc": "37.780823,-122.451928",
+        "endpointType": 2,
+        "tripDistanceMeters": 3374,
+        "tripMeanSpeedKPH": 23,
+        "tripId": "5aef3bfbc6aed24ac0ed7811cc67f5f8",
+        "endDateTime": "2022-05-01T04:14:22.975Z",
+        "deviceId": "517c7e7c7726e5584c1178e556ce8ec8",
+        "providerType": "consumer"
+    },
+    {
+        "providerHash": "c3e878e27f52e2a57ace4d9a76fd9acf",
+        "startLoc": "37.761463,-122.477001",
+        "startDateTime": "2022-05-01T20:31:05.375Z",
+        "endLoc": "37.775483,-122.461332",
+        "endpointType": 3,
+        "tripDistanceMeters": 11021,
+        "tripMeanSpeedKPH": 17,
+        "tripId": "235fad7b1ee5c3303ef9a3bf996784b8",
+        "endDateTime": "2022-05-01T21:10:04.003Z",
+        "deviceId": "09486af8e5d878021cc9a66ae8955bb5",
+        "providerType": "consumer"
+    }
+]

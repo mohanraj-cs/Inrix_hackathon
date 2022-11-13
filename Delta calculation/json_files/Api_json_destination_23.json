@@ -1,0 +1,80 @@
+[
+    {
+        "providerHash": "c3e878e27f52e2a57ace4d9a76fd9acf",
+        "startLoc": "37.764574,-122.417439",
+        "startDateTime": "2022-05-01T16:37:56.124Z",
+        "endLoc": "37.769418,-122.453581",
+        "endpointType": 1,
+        "tripDistanceMeters": 4028,
+        "tripMeanSpeedKPH": 16,
+        "tripId": "94376309727630470af929d674a490dd",
+        "endDateTime": "2022-05-01T16:53:11.813Z",
+        "deviceId": "454e718344a73036f7b64f780f4d8bf2",
+        "providerType": "consumer"
+    },
+    {
+        "providerHash": "c3e878e27f52e2a57ace4d9a76fd9acf",
+        "startLoc": "37.765629,-122.417387",
+        "startDateTime": "2022-05-01T16:54:30.844Z",
+        "endLoc": "37.829461,-122.484313",
+        "endpointType": 3,
+        "tripDistanceMeters": 15158,
+        "tripMeanSpeedKPH": 19,
+        "tripId": "cced118091179886eab1023323b83928",
+        "endDateTime": "2022-05-01T17:42:28.581Z",
+        "deviceId": "dd3265b55b3e0848691c2d9ee3baa754",
+        "providerType": "consumer"
+    },
+    {
+        "providerHash": "c3e878e27f52e2a57ace4d9a76fd9acf",
+        "startLoc": "37.765629,-122.417243",
+        "startDateTime": "2022-05-01T19:30:11.753Z",
+        "endLoc": "38.301347,-122.284082",
+        "endpointType": 1,
+        "tripDistanceMeters": 68904,
+        "tripMeanSpeedKPH": 60,
+        "tripId": "3825f4b188e922ff1062d672dbd750bd",
+        "endDateTime": "2022-05-01T20:39:09.705Z",
+        "deviceId": "2555cb30b4082ced82ec9c5ec72a0083",
+        "providerType": "consumer"
+    },
+    {
+        "providerHash": "c3e878e27f52e2a57ace4d9a76fd9acf",
+        "startLoc": "37.764798,-122.417462",
+        "startDateTime": "2022-05-01T19:56:38.651Z",
+        "endLoc": "37.76033,-122.421426",
+        "endpointType": 1,
+        "tripDistanceMeters": 1233,
+        "tripMeanSpeedKPH": 6,
+        "tripId": "e5f5ae9c06bbb85c1e59de9ad9df2d5e",
+        "endDateTime": "2022-05-01T20:08:38.239Z",
+        "deviceId": "a93eed9191849de604cfc46a020f0c15",
+        "providerType": "consumer"
+    },
+    {
+        "providerHash": "c3e878e27f52e2a57ace4d9a76fd9acf",
+        "startLoc": "37.765194,-122.417222",
+        "startDateTime": "2022-05-01T20:31:25.993Z",
+        "endLoc": "37.767448,-122.422111",
+        "endpointType": 3,
+        "tripDistanceMeters": 1783,
+        "tripMeanSpeedKPH": 6,
+        "tripId": "40cfd252f8117a21a1832b85178e4378",
+        "endDateTime": "2022-05-01T20:49:25.388Z",
+        "deviceId": "ca2178f2d2bba1c1d2490b5f62516167",
+        "providerType": "consumer"
+    },
+    {
+        "providerHash": "c3e878e27f52e2a57ace4d9a76fd9acf",
+        "startLoc": "37.765003,-122.417477",
+        "startDateTime": "2022-05-01T21:32:27.670Z",
+        "endLoc": "37.764964,-122.421023",
+        "endpointType": 2,
+        "tripDistanceMeters": 312,
+        "tripMeanSpeedKPH": 6,
+        "tripId": "ff8a87a612c95abdf425a14a70aa9ed1",
+        "endDateTime": "2022-05-01T21:35:30.020Z",
+        "deviceId": "23617b29f03b2e78704c620a4d1083da",
+        "providerType": "consumer"
+    }
+]

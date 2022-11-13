@@ -1,0 +1,28 @@
+[
+    {
+        "providerHash": "f033ab37c30201f73f142449d037028d",
+        "startLoc": "37.70455,-122.40703",
+        "startDateTime": "2022-05-01T20:23:42.000Z",
+        "endLoc": "37.69267,-122.40484",
+        "endpointType": 2,
+        "tripDistanceMeters": 1399,
+        "tripMeanSpeedKPH": 51,
+        "tripId": "f676942e53d8b8616bdceb4ac368fb9c",
+        "endDateTime": "2022-05-01T20:25:21.000Z",
+        "deviceId": "592bfc543d35ca057efa0ce9b5e90eef",
+        "providerType": "fleet"
+    },
+    {
+        "providerHash": "0353ab4cbed5beae847a7ff6e220b5cf",
+        "startLoc": "37.705,-122.407",
+        "startDateTime": "2022-05-01T22:56:59.000Z",
+        "endLoc": "37.7117,-122.411",
+        "endpointType": 3,
+        "tripDistanceMeters": 1210,
+        "tripMeanSpeedKPH": 44,
+        "tripId": "1f1902c0801a781978f4383581d4be4c",
+        "endDateTime": "2022-05-01T22:58:39.000Z",
+        "deviceId": "dcc3d3aaf63b92b743a18130db8a8df9",
+        "providerType": "consumer"
+    }
+]

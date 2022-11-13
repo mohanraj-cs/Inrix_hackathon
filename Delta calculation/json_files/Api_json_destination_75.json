@@ -1,0 +1,15 @@
+[
+    {
+        "providerHash": "f4f6dce2f3a0f9dada0c2b5b66452017",
+        "startLoc": "37.716874,-122.440912",
+        "startDateTime": "2022-05-02T01:04:16.000Z",
+        "endLoc": "37.720831,-122.43775",
+        "endpointType": 1,
+        "tripDistanceMeters": 524,
+        "tripMeanSpeedKPH": 10,
+        "tripId": "b89ff7ed1a0a19050a63f9249f64e5f6",
+        "endDateTime": "2022-05-02T01:07:19.000Z",
+        "deviceId": "a81dc85d8c3e862d93f243c95302f00f",
+        "providerType": "consumer"
+    }
+]

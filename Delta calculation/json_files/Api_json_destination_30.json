@@ -1,0 +1,54 @@
+[
+    {
+        "providerHash": "c3e878e27f52e2a57ace4d9a76fd9acf",
+        "startLoc": "37.764421,-122.408579",
+        "startDateTime": "2022-05-01T18:25:38.137Z",
+        "endLoc": "37.768331,-122.153471",
+        "endpointType": 1,
+        "tripDistanceMeters": 71455,
+        "tripMeanSpeedKPH": 65,
+        "tripId": "e62acac8e844ae6733cdaa8677be50a8",
+        "endDateTime": "2022-05-01T19:31:36.217Z",
+        "deviceId": "05113299d62431fbaff8e628a4b03ecb",
+        "providerType": "consumer"
+    },
+    {
+        "providerHash": "c3e878e27f52e2a57ace4d9a76fd9acf",
+        "startLoc": "37.764289,-122.407417",
+        "startDateTime": "2022-05-01T20:23:22.454Z",
+        "endLoc": "37.765116,-122.41853",
+        "endpointType": 0,
+        "tripDistanceMeters": 981,
+        "tripMeanSpeedKPH": 9,
+        "tripId": "349f35a98f232e630e17e0721c8b515e",
+        "endDateTime": "2022-05-01T20:29:51.869Z",
+        "deviceId": "19b99acd5eddf0b5dd8933b943c091f2",
+        "providerType": "consumer"
+    },
+    {
+        "providerHash": "c3e878e27f52e2a57ace4d9a76fd9acf",
+        "startLoc": "37.765077,-122.407488",
+        "startDateTime": "2022-05-01T20:54:35.190Z",
+        "endLoc": "37.761817,-122.419682",
+        "endpointType": 1,
+        "tripDistanceMeters": 2292,
+        "tripMeanSpeedKPH": 9,
+        "tripId": "88a7c1a4c484da80b485b75f0d000b7a",
+        "endDateTime": "2022-05-01T21:09:34.770Z",
+        "deviceId": "d7b34d14360087425905ff9ff1470c20",
+        "providerType": "consumer"
+    },
+    {
+        "providerHash": "c3e878e27f52e2a57ace4d9a76fd9acf",
+        "startLoc": "37.76467,-122.408442",
+        "startDateTime": "2022-05-01T22:58:22.488Z",
+        "endLoc": "37.791581,-122.420232",
+        "endpointType": 3,
+        "tripDistanceMeters": 3599,
+        "tripMeanSpeedKPH": 10,
+        "tripId": "716b3707a9b629e646506ed62215dfe7",
+        "endDateTime": "2022-05-01T23:19:56.171Z",
+        "deviceId": "117b7410476538be1c77a34d867fcc16",
+        "providerType": "consumer"
+    }
+]

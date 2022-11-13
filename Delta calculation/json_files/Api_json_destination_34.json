@@ -1,0 +1,54 @@
+[
+    {
+        "providerHash": "c3e878e27f52e2a57ace4d9a76fd9acf",
+        "startLoc": "37.80558,-122.413959",
+        "startDateTime": "2022-05-01T02:47:24.908Z",
+        "endLoc": "37.801446,-122.439981",
+        "endpointType": 2,
+        "tripDistanceMeters": 2353,
+        "tripMeanSpeedKPH": 16,
+        "tripId": "6f575d829204be62e4d6fe35c5e919a8",
+        "endDateTime": "2022-05-01T02:56:24.662Z",
+        "deviceId": "23981f299a527d7a73fb7ad89db01b72",
+        "providerType": "consumer"
+    },
+    {
+        "providerHash": "c3e878e27f52e2a57ace4d9a76fd9acf",
+        "startLoc": "37.805433,-122.415055",
+        "startDateTime": "2022-05-01T04:03:32.459Z",
+        "endLoc": "37.805966,-122.410896",
+        "endpointType": 0,
+        "tripDistanceMeters": 370,
+        "tripMeanSpeedKPH": 8,
+        "tripId": "7116f4457853e7b5ef016afeba818832",
+        "endDateTime": "2022-05-01T04:06:29.955Z",
+        "deviceId": "80dd1a7e18c83a1a15f7d321c606e164",
+        "providerType": "consumer"
+    },
+    {
+        "providerHash": "c3e878e27f52e2a57ace4d9a76fd9acf",
+        "startLoc": "37.805326,-122.415949",
+        "startDateTime": "2022-05-01T16:58:39.469Z",
+        "endLoc": "37.699474,-121.84682",
+        "endpointType": 2,
+        "tripDistanceMeters": 64631,
+        "tripMeanSpeedKPH": 62,
+        "tripId": "a6bcaf22fc2d49e0d1c1734c41e60bb7",
+        "endDateTime": "2022-05-01T18:01:37.416Z",
+        "deviceId": "8cd5f5863002f1c3777c2680583bcbdf",
+        "providerType": "consumer"
+    },
+    {
+        "providerHash": "54229abfcfa5649e7003b83dd4755294",
+        "startLoc": "37.805372,-122.416062",
+        "startDateTime": "2022-05-01T22:29:22.000Z",
+        "endLoc": "37.806933,-122.418383",
+        "endpointType": 0,
+        "tripDistanceMeters": 323,
+        "tripMeanSpeedKPH": 19,
+        "tripId": "e32157c72475467d74d0a4ca464f80ee",
+        "endDateTime": "2022-05-01T22:30:22.000Z",
+        "deviceId": "9984262780070d08e1202390910889fa",
+        "providerType": "fleet"
+    }
+]
